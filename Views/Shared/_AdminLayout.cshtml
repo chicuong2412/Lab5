@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <style>
+        .sidebar {
+			border-right: 1px solid #dee2e6;
+        }
+
+        .content {
+            min-height: calc(100vh - 140px); /* Adjust based on header/footer height */
+			padding: 0;
+        }
+
+		.navbar {
+			border-bottom: 1px solid #dee2e6;
+		}
+
+		footer {
+			border-top: 1px solid #dee2e6;
+			padding: 10px 0;
+		}
+
+    </style>
+</head>
+<body>
+    <header class="navbar bg-white">
+        <div class="container-fluid">
+            <a class="navbar-brand">
+                <img class="mb-1" style="cursor: pointer" src="/assets/image/logo.6362708d.svg" loading="lazy" />
+            </a>
+            <div class="">
+                <img src="/assets/image/profile.jpg" class="rounded-circle" width="32" height="32" alt="Profile">
+            </div>
+        </div>
+    </header>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-2 sidebar bg-white">
+                <ul class="menuDashboard">
+					@* <li class="menuItemDashboard"> *@
+					@* 	<a class="nav-link" asp-controller="Admin" asp-action="Index">Dashboard</a> *@
+					@* </li> *@
+                    <li class="menuItemDashboard">
+						<a class="nav-link" asp-controller="Admin" asp-action="UserTable">User Management</a>
+					</li>
+                    <li class="menuItemDashboard">
+						<a class="nav-link" asp-controller="Admin" asp-action="BookManagement">Book Management</a>
+					</li>
+                </ul>
+            </div>
+
+            <div class="col-10 bg-light content">
+                <div class="">@RenderBody()</div>
+            </div>
+        </div>
+        <footer class="bg-white">
+            <div class="container-fluid">
+                <div class="text-center">Footer</div>
+            </div>
+        </footer>
+    </div>
+
+    
+</body>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+@await RenderSectionAsync("Scripts", required: false)
+</html>
